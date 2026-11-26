@@ -39,14 +39,13 @@ git clone --single-branch --branch release https://github.com/pizzall/ohmy-harne
 
 ## 本地验证
 
-在克隆的仓库根目录运行以下命令。前两条使用当前检出目录做演示项目，初始化会在此创建已被 Git 忽略的 `.superagent/`。实际工作时把 `--root` 指向目标项目。
+在克隆的仓库根目录运行以下两条命令即可验证安装。初始化会在当前目录创建已被 Git 忽略的 `.superagent/`。实际工作时把 `--root` 指向目标项目。
 
 ```sh
 python ohmy-harness/scripts/oma.py --root . init
 python ohmy-harness/scripts/oma.py --root . status
-python tests/all.py
 ```
 
-`init` 会分别送入缺项和完整证据，审查 hook 成功拦住前者并放行后者才返回 `ready`。离线回归可在没有模型订阅或 API Key 的环境运行。
+`init` 会分别送入缺项和完整证据，审查 hook 成功拦住前者并放行后者才返回 `ready`。这两条命令只使用本地账本，无需模型订阅或 API Key。
 
 需要了解具体的派单、恢复和验收规则，可从[技能入口](ohmy-harness/SKILL.md)、[超时恢复](ohmy-harness/references/05-recovery.md)和[审查放行](ohmy-harness/references/08-review.md)继续阅读。
